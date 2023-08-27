@@ -15,6 +15,7 @@ func main() {
 	router.HandleFunc("/users/{id}", GetUser).Methods("GET")
 	router.HandleFunc("/users", CreateUser).Methods("POST")
 	router.HandleFunc("/users/{id}", UpdateUser).Methods("PUT")
+	router.HandleFunc("/usersdetails", userDetails).Methods("GET")
 	router.HandleFunc("/users/{id}", DeleteUser).Methods("DELETE")
 	log.Fatal(http.ListenAndServe(":8000", router))
 }
@@ -39,4 +40,8 @@ func UpdateUser(w http.ResponseWriter, r *http.Request) {
 }
 func DeleteUser(w http.ResponseWriter, r *http.Request) {
 
+}
+
+func userDetails(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "Fetching User details..........")
 }
